@@ -163,8 +163,8 @@ func GetPodContainers(files []string) ([]string, error) {
 		log.Errorln("Error generating compose cmd parts")
 		return nil, err
 	}
-	//parts = append([]string{"-c docker-compose "}, parts...)
-	out, err := utils.RetryCmd(config.GetMaxRetry(), exec.Command("docker-compose", parts...))
+	parts = append([]string{"-c docker-compose "}, parts...)
+	out, err := utils.RetryCmd(config.GetMaxRetry(), exec.Command("/bin/bash ", parts...))
 	if err != nil {
 		log.Errorf("GetContainerIds : Error executing cmd docker-compose ps %#v", err)
 		return nil, err
