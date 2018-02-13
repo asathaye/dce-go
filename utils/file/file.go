@@ -30,7 +30,6 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"fmt"
 
 	mesos "github.com/mesos/mesos-go/mesosproto"
 	"github.com/paypal/dce-go/config"
@@ -429,9 +428,9 @@ func GenerateAppFolder() error {
 		config.SetConfig(config.FOLDER_NAME, types.DEFAULT_FOLDER)
 	}
 
-	path, _ := filepath.Abs("")
-	dirs := strings.Split(path, PATH_DELIMITER)
-	folder = strings.TrimSpace(fmt.Sprintf("%s_%s", folder, dirs[len(dirs)-1]))
+	//path, _ := filepath.Abs("")
+	//dirs := strings.Split(path, PATH_DELIMITER)
+	//folder = strings.TrimSpace(fmt.Sprintf("%s_%s", folder, dirs[len(dirs)-1]))
 
 	_folder := []string{strings.TrimSpace(folder)}
 	err := GenerateFileDirs(_folder)
@@ -440,7 +439,7 @@ func GenerateAppFolder() error {
 		return err
 	}
 
-	config.GetConfig().Set(config.FOLDER_NAME, folder)
+	//config.GetConfig().Set(config.FOLDER_NAME, folder)
 
 	// copy tar folder to poddata folder
 	/*tar := config.GetConfig().GetString(TAR)

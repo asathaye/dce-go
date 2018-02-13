@@ -109,6 +109,11 @@ func GenerateCmdParts(files []string, cmd string) ([]string, error) {
 	if config.EnableVerbose() {
 		cmd = " --verbose" + cmd
 	}
+	//if project is set use it as project name
+	projectName := config.GetConfig().GetString("project")
+	if len(projectName) > 0{
+		cmd = " --project-name " + projectName + cmd
+	}
 	var s string
 	for _, file := range files {
 		if _, err := os.Stat(file); err != nil {
